@@ -1,0 +1,13 @@
+FROM node:alpine
+
+RUN mkdir -p /src
+WORKDIR /src
+
+COPY package.json /src
+RUN npm install
+
+VOLUME /artifacts
+
+COPY . /src
+
+CMD ["/src/bin/build.sh"]
